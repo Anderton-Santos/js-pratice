@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Modal Simples</title>
+  <style>
+    /* Estilos básicos para o body */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Botão para abrir modal */
+    #openModalBtn {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin: 40px;
+    }
+
+    /* Fundo do modal (overlay) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      /* Começa escondido */
+      opacity: 0;
+      pointer-events: none;
+
+      /* Animação */
+      transition: opacity 0.3s ease;
+    }
+
+    /* Quando o modal está aberto */
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Caixa do modal */
+    .modal {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 8px;
+      max-width: 400px;
+      width: 90%;
+
+      /* Para animação de entrada */
+      transform: translateY(-30px);
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Modal aberto (animado para posição natural) */
+    .modal-overlay.active .modal {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Botão fechar */
+    .close-btn {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      cursor: pointer;
+      float: right;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <button id="openModalBtn">Abrir Modal</button>
+
+  <div id="modalOverlay" class="modal-overlay">
+    <div class="modal">
+      <button class="close-btn" id="closeModalBtn">X</button>
+      <h2>Modal Simples</h2>
+      <p>Essa é uma caixa de diálogo com animação suave de abertura e fechamento.</p>
+    </div>
+  </div>
+
+  <script>
+    const openBtn = document.getElementById("openModalBtn");
+    const closeBtn = document.getElementById("closeModalBtn");
+    const modalOverlay = document.getElementById("modalOverlay");
+
+    openBtn.addEventListener("click", () => {
+      modalOverlay.classList.add("active");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modalOverlay.classList.remove("active");
+    });
+
+    // Fechar modal clicando fora da caixa (no overlay)
+    modalOverlay.addEventListener("click", (e) => {
+      if (e.target === modalOverlay) {
+        modalOverlay.classList.remove("active");
+      }
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <button id="open-modal">Abrir Modal</button>
+
+    <div class="display">
+      <div class="modal" id="modal">
+        <button id="close-modal">X</button>
+        <h3>Modal simples</h3>
+        <span>texto basico para pratica de modal</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const openModal = document.getElementById("open-modal")
+    const closeModal = document.getElementById("close-modal")
+    const modal = document.getElementById("modal")
+    const display = document.querySelector(".display")
+
+    openModal.addEventListener("click", () => {
+      modal.classList.add("active")
+    })
+
+    closeModal.addEventListener("click", () => {
+      modal.classList.remove("active")
+    })
+
+    display.addEventListener("click", () => {
+      modal.classList.remove("active")
+    })
+  </script>
+
+</body>
+
+</html>

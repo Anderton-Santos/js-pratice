@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h1>Todo List</h1>
+
+  <div>
+    <input id="input" type="text" style="background-color:
+     white;
+     border: none;
+     color: black;
+     padding: 6px;
+     outline: none;
+     ">
+
+    <button id="btn">Adicionar</button>
+  </div>
+
+  <ul id="ul">
+
+  </ul>
+
+  <script>
+    const input = document.getElementById("input")
+    const btn = document.getElementById("btn")
+    const ul = document.getElementById("ul")
+
+    btn.addEventListener("click", () => {
+      const text = input.value.trim()
+      if (text !== "") {
+        const li = document.createElement("li")
+        li.textContent = text
+        ul.appendChild(li)
+        input.value = ""
+      }
+    })
+
+
+  </script>
+</body>
+
+</html>

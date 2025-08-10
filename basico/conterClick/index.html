@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- <script src="script.js"></script> -->
+</head>
+
+<body>
+  <div id="display">
+
+    <h1>Contador de numeros</h1>
+
+    <section class="btn">
+      <button id="decrease">-</button>
+      <button id="increase">+</button>
+    </section>
+
+    <span id="count">0</span>
+  </div>
+
+</body>
+
+<script>
+  let count = 0
+
+  const increase = document.getElementById("increase")
+  const decrease = document.getElementById("decrease")
+
+  increase.addEventListener("click", () => {
+    count += 1
+
+
+    document.getElementById("count").textContent = count
+  })
+
+  decrease.addEventListener("click", () => {
+    if (count > 0) {
+      count -= 1
+    }
+    document.getElementById("count").textContent = count
+    return
+  })
+
+
+</script>
+
+</html>
