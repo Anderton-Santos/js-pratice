@@ -9,7 +9,58 @@
 </head>
 
 <body>
-  <h1>ola mundo</h1>
+  <div id="cronometro">
+    <h1 id="second">00</h1>
+  </div>
+
+  <div id="btns">
+    <button id="return">Return</button>
+    <button id="play">Play</button>
+    <button>Pause</button>
+  </div>
+
+  <script>
+    let time = 0;
+    let intervalId;
+
+    function playCronometro() {
+      intervalId = setInterval(() => {
+        time++;
+        const second = document.getElementById("second");
+        // Aqui você pode formatar o tempo em minutos e segundos
+        let minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+        second.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }, 1000);
+
+
+    }
+
+    play.addEventListener("click", () => {
+      if (!intervalId) {
+        playCronometro();
+      }
+    });
+
+    function zerar() {
+      const btnReturn = document.getElementById("return")
+
+      btnReturn.addEventListener("click", () => {
+        clearInterval(intervalId)
+        intervalId = null;
+        time = 0
+
+        const second = document.getElementById("second");
+        second.textContent = "00:00"
+
+      })
+
+    }
+
+    zerar()
+
+  </script>
+
 </body>
 
 </html>

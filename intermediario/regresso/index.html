@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div>
+    <label>Minutos: </label>
+    <input type="number" id="minutos" min="0" value="1">
+    <label>Segundos: </label>
+    <input type="number" id="segundos" min="0" value="0">
+  </div>
+
+  <div id="cronometro">
+    <h1 id="display">00:00</h1>
+  </div>
+
+  <div id="btns">
+    <button id="start">Iniciar</button>
+    <button id="pause">Pausar</button>
+    <button id="reset">Resetar</button>
+  </div>
+
+  <script>
+    let tempoRestante = 0;
+    let intervalId = null;
+
+    function atualizarDisplay() {
+      let minutos = Math.floor(tempoRestante / 60);
+      let segundos = tempoRestante % 60;
+      document.getElementById("display").textContent =
+        `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+    }
+
+    function iniciarCronometro() {
+      if (!intervalId && tempoRestante > 0) {
+        intervalId = setInterval(() => {
+          tempoRestante--;
+          atualizarDisplay();
+
+          if (tempoRestante <= 0) {
+            clearInterval(intervalId);
+            intervalId = null;
+            alert("Tempo encerrado!");
+          }
+        }, 1000);
+      }
+    }
+
+    document.getElementById("start").addEventListener("click", () => {
+      if (tempoRestante === 0) {
+        const min = parseInt(document.getElementById("minutos").value) || 0;
+        const seg = parseInt(document.getElementById("segundos").value) || 0;
+        tempoRestante = min * 60 + seg;
+        atualizarDisplay();
+      }
+      iniciarCronometro();
+    });
+
+    document.getElementById("pause").addEventListener("click", () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    });
+
+    document.getElementById("reset").addEventListener("click", () => {
+      clearInterval(intervalId);
+      intervalId = null;
+      tempoRestante = 0;
+      atualizarDisplay();
+    });
+
+    atualizarDisplay();
+  </script>
+
+</body>
+
+</html>

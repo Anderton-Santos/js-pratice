@@ -3,3 +3,16 @@
   margin: 0;
   box-size: boder-box;
 }
+
+#cronometro{
+  display: flex;
+  align-items: center;    
+  justify-content: center;
+}
+
+#btns{
+    display: flex;
+  align-items: center;    
+  justify-content: center;
+  gap: 4px;
+  }
