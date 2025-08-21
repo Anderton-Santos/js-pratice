@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Nmr de palavras</h1>
+
+  <script>
+    const nmrs = prompt("Digite seu anuncio:")
+
+    let acm = 0
+    let tam = nmrs.length
+
+    for (let i = 0; i < tam; i++) {
+      if (nmrs.charAt(i) == " ") {
+        acm++
+      }
+
+    }
+
+    alert(`O anuncio ${nmrs} contém ${acm + 1} palavras`)
+
+
+  </script>
+</body>
+
+</html>

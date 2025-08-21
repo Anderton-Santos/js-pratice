@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>ola mundo</h1>
+
+  <script>
+    alert("digite 0 para sair")
+
+    do {
+      const num = Number(prompt("Digite o umrto"))
+      if (num == 0 || num == isNaN(num)) {
+        const sair = confirm("Deseja sair?")
+        if (sair) {
+          break
+        } else {
+          continue
+        }
+      }
+
+      if (num % 2 == 0) {
+        alert(`O numero ${num} é par - ${num * 2}`)
+      } else {
+        alert(`O numero ${num} é impar - ${num * 3}`)
+      }
+    } while (true) {
+      alert("bye")
+    }
+
+  </script>
+</body>
+
+</html>

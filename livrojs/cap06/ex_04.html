@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Destaques alunos</h1>
+
+  <form action="">
+    <p>Nome:
+      <input type="text" name="name">
+    </p>
+
+    <p>Nota:
+      <input type="number" name="nota">
+    </p>
+
+    <input type="submit" value="Adicionar">
+    <button name="listAll">Listar all</button>
+    <button name="listNotas">Listar notas</button>
+  </form>
+
+  <div>
+    <span></span>
+  </div>
+
+
+  <script>
+
+    const display = document.querySelector("span")
+
+    let alunos = []
+
+    const frm = document.querySelector("form")
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const nameInput = frm.name.value
+      const notaInput = Number(frm.nota.value)
+
+      if (nameInput == "" || notaInput == "") {
+        return
+      }
+
+      alunos.push({ nameInput, notaInput })
+
+      frm.name.value = ""
+      frm.nota.value = ""
+
+      frm.listAll.dispatchEvent(new Event("click"))
+    })
+
+    frm.listAll.addEventListener("click", () => {
+      if (alunos.length == 0) {
+        alert("Nenhum aluno adicionado!")
+        return
+      }
+
+      let acm = ""
+
+      for (let aluno of alunos) {
+        acm += `Nome:${aluno.nameInput}
+                Nota: ${aluno.notaInput}` + "\n" + "\n"
+      }
+
+      display.innerText = `${acm}`
+      console.log(acm)
+      console.log(alunos)
+    })
+
+    frm.listNotas.addEventListener("click", () => {
+
+      const copia = [...alunos]
+
+      let notaValue = []
+      let listnotas = ""
+
+      const maiorNota = copia.reduce((acumulador, aluno) => {
+        return aluno.notaInput > acumulador ? aluno.notaInput : acumulador
+      }, 0)
+
+      for (const newlist of copia) {
+        const { nameInput, notaInput } = newlist
+
+        if (notaInput >= 7) {
+          notaValue.push(nameInput)
+
+          listnotas += `Aluno destaque: \n Nome:${newlist.nameInput}, nota: ${newlist.notaInput}`
+        }
+
+      }
+
+      display.innerText = `${listnotas}`
+
+
+
+
+    })
+  </script>
+</body>
+
+</html>

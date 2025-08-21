@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Programa numero em ordem</h1>
+
+  <form action="">
+    <p>
+      Número:
+      <input type="number" name="input" id="">
+      <input type="submit">
+    </p>
+
+    <button name="btn">Verificar Ordem</button>
+
+  </form>
+
+  <div>
+    <span></span>
+    <p id="display2"></p>
+  </div>
+
+
+  <script>
+
+    const nmrs = []
+
+    const display = document.querySelector("span")
+    const display2 = document.getElementById("display2")
+
+    const frm = document.querySelector("form")
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const num = Number(frm.input.value)
+
+      if (num == 0) return
+
+
+      if (nmrs.includes(num)) {
+        alert("Esse numero já foi incluido, favor digite outro!")
+        frm.input.value = ""
+        nmrs.shift()
+        return
+      }
+
+      nmrs.push(num)
+      let acm = ""
+
+      for (let item of nmrs) {
+        acm += `${item}, `
+      }
+
+      display.innerText = `${acm}`
+
+      frm.input.value = ""
+
+    })
+
+    frm.btn.addEventListener("click", () => {
+
+      let crescente = true
+      for (let i = 0; i < nmrs.length - 1; i++) {
+        if (nmrs[i] > nmrs[i + 1]) {
+          crescente = false
+          break
+        }
+      }
+
+      if (crescente) {
+        display2.innerText = "Os números estão em ordem crescente! Parabéns 🎉"
+      } else {
+        display2.innerText = "Os números não estão em ordem crescente!"
+      }
+
+
+
+    })
+
+
+  </script>
+</body>
+
+</html>

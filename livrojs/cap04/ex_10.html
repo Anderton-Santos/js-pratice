@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>titulo</h1>
+
+  <input type="number">
+  <p>
+    <button>Verificar par ou Impar</button>
+  </p>
+
+  <span></span>
+
+  <script>
+    // const btn = document.querySelector("button")
+
+    // btn.addEventListener("click", () => {
+    //   const inpt = document.querySelector("input").value
+    //   const span = document.querySelector("span")
+    //   if (inpt % 2 == 0) {
+    //     span.innerText = `O numero ${inpt} é par`
+    //   } else {
+    //     span.innerText = `O numero ${inpt} é Impar`
+    //   }
+    // })
+
+    const btn = document.querySelector("button")
+
+    btn.addEventListener("click", () => {
+      const inpt = document.querySelector("input").value
+      const span = document.querySelector("span")
+
+      const verify = inpt % 2 == 0 ? "Par" : "impar"
+
+      span.innerText = `O numero ${inpt} é ${verify}`
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Ano de copa</h1>
+
+  <p>
+    Digite o ano:
+    <input type="number">
+    <button>Verificar</button>
+  </p>
+
+  <div>
+    <span id="ano"></span>
+    <span id="verify"></span>
+  </div>
+
+  <script>
+    const btn = document.querySelector("button")
+    btn.addEventListener("click", () => {
+      do {
+        const inpt = Number(document.querySelector("input").value)
+
+        const ano = document.getElementById("ano")
+        const verify = document.getElementById("verify")
+
+        if (inpt == 0) {
+          break
+        } else if (inpt == 1942 || inpt == 1946) {
+          ano.innerText = `Ano: ${inpt}`
+          verify.innerText = `Não o ${inpt} não houve copa devido a seguda guerra`
+        } else if (inpt < 1930) {
+          verify.innerText = `Não o ${inpt} não houve copa, iniciaram em 1930`
+        } else if (inpt % 4 == 2) {
+          ano.innerText = `Ano: ${inpt}`
+          verify.innerText = `Sim, ${inpt} houve copa`
+        }
+
+      } while (true)
+
+
+    })
+
+  </script>
+</body>
+
+</html> -->

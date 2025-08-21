@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Revenda de veiculos</h1>
+
+  <div>
+    <label for="">Veiculo</label>
+    <input type="text" id="input">
+  </div>
+
+  <div>
+    <label for="">Valor:</label>
+    <input type="text" id="value">
+  </div>
+
+  <button id="btn">Enviar</button>
+
+  <div>
+
+    <p>
+      <span id="title"></span>
+    </p>
+
+    <p>
+      <span id="buy"></span>
+    </p>
+
+    <p>
+      <span id="cart"></span>
+    </p>
+  </div>
+
+  <script>
+
+    const btn = document.getElementById("btn")
+
+    btn.addEventListener("click", (e) => {
+      e.preventDefault()
+
+      const car = document.getElementById("input").value
+      const price = document.getElementById("value").value
+
+      const entrada = (price / 2)
+      const parce = (entrada / 12)
+
+      const modelo = document.getElementById("title")
+      const enter = document.getElementById("buy")
+      const card = document.getElementById("cart")
+
+      modelo.innerText = `Promoção: ${car}`
+      enter.innerText = `Entrada: de R$${entrada}`
+      card.innerText = `+12X de R$: ${parce}`
+    })
+
+  </script>
+</body>
+
+</html>

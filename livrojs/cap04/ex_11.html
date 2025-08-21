@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Velocidade multa</h1>
+
+  <form action="">
+    <p>Velocidade Permitida:
+      <input type="number" id="allow">
+    </p>
+
+    <p>Velocidadedo condutor:
+      <input type="number" id="condut">
+    </p>
+
+    <input type="submit" value="Calcular">
+  </form>
+
+  <div>
+    <span id="display"></span>
+  </div>
+
+  <script>
+    const frm = document.querySelector("form")
+    const display = document.getElementById("display")
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const condut = Number(document.getElementById("condut").value)
+      const allow = Number(document.getElementById("allow").value)
+
+      const calc = ((allow * 0.2) + allow)
+
+      if (condut <= allow) {
+        display.innerText = `Sem multa`
+        return
+      }
+
+      else if (condut <= calc) {
+        display.innerText = `Multa leve`
+        return
+
+      } else if (condut > calc) {
+        display.innerText = `Multa grave`
+        return
+
+      }
+
+    })
+
+  </script>
+</body>
+
+</html>

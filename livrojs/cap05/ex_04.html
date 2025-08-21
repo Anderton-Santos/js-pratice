@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Programa conta do mês</h1>
+
+  <form action="">
+    <p>
+      Descrição da conta:
+      <input type="text" name="name">
+    </p>
+
+    <p>
+      valor:
+      <input type="number" name="value">
+    </p>
+
+    <input type="submit" name="" id="btn">
+
+  </form>
+
+  <div>
+    <span id="counts"></span>
+    <span id="total"></span>
+  </div>
+
+
+  <script>
+    const frm = document.querySelector("form")
+    const display1 = document.getElementById("counts")
+    const display2 = document.getElementById("total")
+
+    let display = ""
+    let valTotal = 0
+    let valCount = 0
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+
+
+
+      const name = frm.name.value
+      const value = Number(frm.value.value)
+
+      valCount++
+
+      valTotal = valTotal + value
+
+      display = display + name + ", " + value + "\n"
+
+      display1.innerText = `${display}`
+      display2.innerText = `Numero de contas ${valCount} valor final${valTotal}`
+
+
+      frm.name.value = ""
+      frm.value.value = ""
+
+
+    })
+  </script>
+</body>
+
+</html>

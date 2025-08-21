@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Consultorio Odontológico</h1>
+
+  <form action="">
+    <div>
+      <input type="text" id="inpt" name="inpt" required autofocus>
+      <input id="adicionar" type="submit" value="Adicionar">
+      <button id="urgencia" name="urgencia">Urgencia</button>
+      <button id="atender" name="atender">Atender</button>
+    </div>
+
+  </form>
+
+  <div>
+    <h2>Em atendiment:</h2>
+    <h3></h3>
+    <span></span>
+  </div>
+
+  <script>
+    const frm = document.querySelector("form")
+
+    const atendi = document.querySelector("h3")
+    const list = document.querySelector("span")
+    const pacients = []
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+      const inpt = frm.inpt.value
+
+      pacients.push(inpt)
+      let lista = ""
+
+      for (let i = 0; i < pacients.length; i++) {
+        lista += `${i + 1} paciente ${pacients[i]}` + "\n"
+      }
+
+      list.innerText = lista
+      frm.inpt.value = ""
+      frm.inpt.focus()
+
+    })
+
+
+    frm.urgencia.addEventListener("click", (e) => {
+      e.preventDefault()
+
+      const inpt = frm.inpt.value
+
+      pacients.unshift(inpt)
+      let lista = ""
+
+      pacients.forEach((pacient, i) => lista += `${i + 1} paciente ${pacients[i]}` + "\n")
+
+      list.innerText = lista
+      frm.inpt.value = ""
+      frm.inpt.focus()
+
+    })
+
+    frm.atender.addEventListener("click", (e) => {
+      e.preventDefault()
+      const inpt = frm.inpt.value
+
+      const atender = pacients.shift()
+      atendi.innerText = atender
+      let lista = ""
+
+      pacients.forEach((pacient, i) => lista += `${i + 1} paciente ${pacients[i]}` + "\n")
+
+      list.innerText = lista
+      frm.inpt.value = ""
+      frm.inpt.focus()
+
+
+    })
+
+
+
+
+
+  </script>
+</body>
+
+</html>

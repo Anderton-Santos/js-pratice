@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Revenda Herbie!</h1>
+
+  <form action="">
+    <p>
+      Modelo:
+      <input type="text" name="inptName" id="">
+    </p>
+
+    <p>
+      Preço R$:
+      <input type="number" name="inptPrice">
+      <input type="submit" name="" id="" value="Adicionar">
+    </p>
+
+    <button id="listAll">Listar Todos</button>
+    <button id="filterPrice">Filtrar por preço</button>
+    <button id="simulacion">Simular promoção</button>
+
+  </form>
+
+  <div>
+    <span id="title"></span>
+
+    <span id="acm"></span>
+  </div>
+
+
+  <script>
+    const displayTitle = document.getElementById("title")
+    const acm = document.getElementById("acm")
+
+    const listAll = document.getElementById("listAll")
+    const filterPrice = document.getElementById("filterPrice")
+    const simulacion = document.getElementById("simulacion")
+
+    const cars = []
+
+    const frm = document.querySelector("form")
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+      const modelo = frm.inptName.value
+      const preco = Number(frm.inptPrice.value)
+
+      cars.push({ modelo, preco })
+
+      frm.inptName.value = ""
+      frm.inptPrice.value = ""
+
+      listAll.dispatchEvent(new Event("click"))
+    })
+
+
+    listAll.addEventListener("click", () => {
+      if (cars.length == 0) {
+        alert("Nenhum modelo cadastrado!")
+        return
+      }
+
+      const list = cars.reduce((acumalador, carro) => {
+        return acumalador + carro.modelo + " - R$:" + carro.preco.toFixed(2) + "\n"
+      }, "")
+
+      acm.innerText = `Lista de carros Cadastrados\n${"-".repeat(40)}\n${list}`
+    })
+
+
+    filterPrice.addEventListener("click", () => {
+      const maximo = Number(prompt("Qual o valor max que deseja pagar?"))
+
+      if (maximo == 0 || isNaN(maximo)) return
+
+      const carFilt = cars.filter(max => max.preco <= maximo)
+      if (carFilt.length == 0) {
+        alert("Nenhum carro no momento bate com a filtragem desejada!")
+        return
+      }
+      lista = ""
+      for (const carrs of carFilt) {
+        lista += `${carrs.modelo} - R$: ${carrs.preco.toFixed(2)}\n`
+      }
+      acm.innerText = `Carros até: \n${"-".repeat(40)}\n${lista}`
+
+    })
+
+
+    simulacion.addEventListener("click", () => {
+      const maximo = Number(prompt("Qual o porcentual de desconto?"))
+
+      if (maximo == 0 || isNaN(maximo)) return
+
+      const carDesc = cars.map(aux => ({
+        modelo: aux.modelo,
+        preco: aux.preco - (aux.preco * maximo / 100)
+      }))
+
+      lista = ""
+      for (const carrs of carDesc) {
+        lista += `${carrs.modelo} - R$: ${carrs.preco.toFixed(2)}\n`
+      }
+      acm.innerText = `Carros com desconto: \n${"-".repeat(40)}\n${lista}`
+
+    })
+
+
+  </script>
+</body>
+
+</html>

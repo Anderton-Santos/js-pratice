@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Parquimetro</h1>
+
+  <form action="">
+    <p>Valor:
+      <input type="number">
+    </p>
+
+    <button>Deposito</button>
+  </form>
+
+  <div>
+    <span id="display-tempo"></span>
+    <span id="display-troco"></span>
+  </div>
+
+
+  <script>
+
+
+    const btn = document.querySelector("button")
+    btn.addEventListener("click", (e) => {
+      e.preventDefault()
+      const inpt = Number(document.querySelector("input").value)
+
+
+
+      if (inpt < 1) return
+
+      let tempo
+      let troco
+
+      if (inpt >= 3) {
+        tempo = 120
+        troco = inpt - 3.0
+      } else if (inpt >= 1.75) {
+        tempo = 60
+        troco = inpt - 1.75
+      } else {
+        tempo = 30
+        troco = inpt - 1.0
+      }
+
+      if (troco > 0) {
+        const diplay2 = document.getElementById("display-troco").innerText = troco
+      }
+      const diplay1 = document.getElementById("display-tempo").innerText = tempo
+
+
+    })
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

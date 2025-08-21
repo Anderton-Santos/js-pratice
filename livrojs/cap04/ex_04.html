@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Calculo peso ideal</h1>
+
+  <form action="">
+    <div>
+      <p>Nome:
+        <input type="text" id="name">
+      </p>
+
+      <p>
+        <input type="radio" name="Masclino" id="masculino">Masculino
+        <input type="radio" name="Feminino" id="feminino">Feminino
+      </p>
+
+      <p>Altura:
+        <input type="text" id="altura">
+      </p>
+
+    </div>
+
+    <input type="submit" id="calc" Calucular peso ideal">
+    <input type="reset" id="clear" value="Limpar campos">
+  </form>
+
+  <div>
+    <span id="display"></span>
+  </div>
+  <script>
+    const frm = document.querySelector("form")
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const name = document.getElementById("name").value
+      const masculino = document.getElementById("masculino").checked
+      const feminino = document.getElementById("feminino").checked
+      const altura = document.getElementById("altura").value
+
+      const dispaly = document.getElementById("display")
+
+      let peso
+      if (feminino) {
+        peso = 21 * Math.pow(altura, 2)
+      } else {
+        peso = 22 * Math.pow(altura, 2)
+      }
+
+      dispaly.innerHTML = `${name}, seu peo ideal é ${peso.toFixed(2)}`
+    })
+
+  </script>
+</body>
+
+</html>

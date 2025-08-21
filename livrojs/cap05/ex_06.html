@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Etiqueta</h1>
+
+  <form action="">
+    <p>
+      Produto:
+      <input type="text" name="product">
+    </p>
+
+    <p>
+      Etiqueta:
+      <input type="text" name="etiqueta">
+    </p>
+
+    <input type="submit">
+
+  </form>
+
+  <div>
+    <span></span>
+  </div>
+
+
+  <script>
+    const frm = document.querySelector("form")
+    const spn = document.querySelector("span")
+
+    let displayProduct = ""
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+
+
+
+      const product = frm.product.value
+      const valor = Number(frm.etiqueta.value)
+
+      for (let i = 1; i < valor; i++) {
+        displayProduct = displayProduct + product + "\n"
+      }
+
+
+
+      spn.innerText = displayProduct
+
+    })
+
+  </script>
+</body>
+
+</html>

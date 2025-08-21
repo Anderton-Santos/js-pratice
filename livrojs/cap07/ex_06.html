@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Validar Senha</h1>
+
+  <form action="">
+    <p>Senha:
+      <input type="text" name="pass">
+    </p>
+
+    <input type="submit">
+  </form>
+
+  <div>
+    <span></span>
+  </div>
+
+  <script>
+    const frm = document.querySelector("form")
+
+    const display = document.querySelector("span")
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const pass = frm.pass.value
+      let err = []
+
+      if (pass.length < 8 || pass.length > 18) {
+        err.push("Senha deve ter no minimo 8 e no max 18 caracteres")
+      }
+      if (pass.match(/[0-9]/g) == null) {
+        err.push("Deve conter no minimo um numro")
+      }
+      if (pass.match(/[a-z]/g) == null) {
+        err.push("Deve conter no minimo uma letra minuscula")
+      }
+      if (pass.match(/[A-Z]/g) == null || pass.match(/[A-Z]/g).length < 2) {
+        err.push("Deve conter no minimo duas letras maiuscula")
+      }
+      if (pass.match(/\w|_/g) == null) {
+        err.push("Deve conter no minimo especial")
+      }
+
+      if (err.length == 0) {
+        display.innerText = pass
+      } else {
+        display.innerText = `${err.join(",  \n")}`
+      }
+
+    })
+  </script>
+</body>
+
+</html>

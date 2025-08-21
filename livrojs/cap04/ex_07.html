@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Programa caixa eletronico</h1>
+
+  <p>Saque:
+    <input type="number" name="" id="">
+  </p>
+
+  <button>Exibir notas para saque</button>
+
+  <div>
+    <span id="display1"></span>
+    <span id="display2"></span>
+    <span id="display3"></span>
+  </div>
+
+  <script>
+    const btn = document.querySelector("button")
+
+    btn.addEventListener("click", (e) => {
+      e.preventDefault()
+      const inputEl = document.querySelector("input")
+      const input = Number(inputEl.value)
+
+      if (input % 10 != 0) {
+        alert("preencha o campo corretamente")
+        inputEl.focus()
+        return
+      }
+
+      const cem = Math.floor(input / 100)
+      let resto = input % 100
+
+      const ciq = Math.floor(resto / 50)
+      resto = resto % 50
+
+      const dez = Math.floor(resto / 10)
+      resto = resto % 10
+
+      if (cem > 0) {
+        document.getElementById("display1").innerText = cem
+      }
+      if (ciq > 0) {
+        document.getElementById("display2").innerText = ciq
+      }
+      if (dez > 0) {
+        document.getElementById("display3").innerText = dez
+      }
+    })
+  </script>
+</body>
+
+</html>

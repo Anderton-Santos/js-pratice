@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Lan House</h1>
+
+  <form>
+    <div>
+      <label for="">produto:</label>
+      <input type="text" id="name">
+    </div>
+
+    <div>
+      <label for="">Valor:</label>
+      <input type="text" id="price">
+    </div>
+
+    <input type="submit">
+  </form>
+
+  <div>
+    <span id="total"></span>
+    <span id="promo"></span>
+  </div>
+
+
+  <script>
+    const frm = document.querySelector("form")
+
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const prop = document.getElementById("name").value
+      const clie = Number(document.getElementById("price").value)
+
+      const promo = (clie * 0.5)
+      const prods = (clie * 2) + promo
+
+      const value = document.getElementById("total")
+      const nom = document.getElementById("promo")
+
+      value.innerText = `Valor a pagar ${prods}`
+      nom.innerText = `Ultimo produto vale  ${promo}`
+
+
+
+    })
+
+  </script>
+</body>
+
+</html>

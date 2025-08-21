@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Pescaria</h1>
+
+  <form action="">
+    <p>Valor da compra:
+      <input type="number" id="buy">
+    </p>
+
+    <input type="submit" value="Calcular">
+  </form>
+
+  <div>
+    <span id="display"></span>
+  </div>
+
+  <script>
+    const frm = document.querySelector("form")
+    const display = document.getElementById("display")
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const buy = Number(document.getElementById("buy").value)
+
+      let parcela = buy / 6
+
+      if (parcela < 20) {
+        display.innerText = `Não podemos parcelar abaixo de 20`
+      } else {
+        display.innerText = `${buy} ${parcela}`
+
+      }
+
+
+
+
+    })
+
+
+  </script>
+</body>
+
+</html>

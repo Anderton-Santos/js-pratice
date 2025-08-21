@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Brinquedoteca</h1>
+
+  <form action="">
+    <p>Nome da criança:
+      <input type="text" name="name">
+    </p>
+
+    <p>idade:
+      <input type="number" name="age">
+      <input type="submit" value="Adicionar">
+    </p>
+
+    <button name="listAll">Listar Todos</button>
+    <button name="resume">Resumir por idade</button>
+
+  </form>
+
+  <div>
+    <span></span>
+  </div>
+
+
+  <script>
+    const frm = document.querySelector("form")
+
+    const span = document.querySelector("span")
+
+    let nameAge = []
+
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+
+      const name = frm.name.value
+      const age = frm.age.value
+
+      if (name == "" || age == "") {
+        alert("Preencha os campos corretamente!")
+        return
+      }
+
+      nameAge.push({ name, age })
+
+      frm.name.value = ""
+      frm.age.value = ""
+
+      frm.listAll.dispatchEvent(new Event("click"))
+    })
+
+    frm.listAll.addEventListener("click", () => {
+      if (nameAge.length == 0) {
+        alert("Ainda não existe nenhuma criança cadastrada!")
+        return
+      }
+
+      let list = ""
+
+      for (const lista of nameAge) {
+        const { name, age } = lista
+        list += name + " - " + age + " anos" + "\n"
+        span.innerText = list
+      }
+    })
+
+    frm.btResumir.addEventListener("click", () => {
+      if (criancas.length == 0) {
+        alert("Não há crianças na lista")
+        return
+      }
+      const copia = [...criancas]
+      copia.sort((a, b) => a.idade - b.idade)
+      let resumo = ""
+      let aux = copia[0].idade
+      let nomes = []
+      for (const crianca of copia) {
+        const { nome, idade } = crianca
+        if (idade == aux) {
+          nomes.push(nome)
+        }
+        else {
+          resumo += aux + " ano(s): " + nomes.length + " criança(s) - "
+          resumo += ((nomes.length / copia.length) * 100).toFixed(2) + "%\n"
+          resumo += "(" + nomes.join(", ") + ")\n\n"
+          aux = idade
+          nomes = []
+          nomes.push(nome)
+        }
+      }
+
+      // adiciona a última criança
+      resumo += aux + " ano(s): " + nomes.length + " criança(s) - "
+      resumo += ((nomes.length / copia.length) * 100).toFixed(2) + "%\n"
+      resumo += "(" + nomes.join(", ") + ")\n\n"
+      resp.innerText = resumo                  // exibe a resposta 
+    })
+
+  </script>
+</body>
+
+</html>

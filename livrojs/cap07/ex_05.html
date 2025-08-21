@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Email Institucional</h1>
+
+  <form action="">
+    <p>Nome:
+      <input type="text" name="name">
+    </p>
+
+    <input type="submit">
+  </form>
+
+  <div>
+    <span></span>
+  </div>
+
+  <script>
+    const frm = document.querySelector("form")
+
+    const display = document.querySelector("span")
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const name = frm.name.value.toLowerCase()
+
+      const middle = name.split(" ")
+
+      let last = name.lastIndexOf(" ")
+
+      let acm = ""
+
+      for (let i = 0; i < middle.length - 1; i++) {
+        acm += middle[i].charAt(0).toLowerCase()
+        console.log(acm)
+      }
+
+      display.innerText = `${acm.trim()}${name.slice(last).trim()}@empresa.com `
+    })
+  </script>
+</body>
+
+</html>

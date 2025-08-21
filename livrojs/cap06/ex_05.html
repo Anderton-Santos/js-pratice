@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Preferencial | Normal</h1>
+
+  <form action="">
+    <p>Nome:
+      <input type="text" name="name">
+    </p>
+
+    <p>Idade:
+      <input type="number" name="age">
+    </p>
+
+    <input type="submit" value="Adicionar">
+  </form>
+
+  <div>
+    <pre id="preferencial"></pre>
+    <pre id="normal"></pre>
+  </div>
+
+  <script>
+    const display1 = document.getElementById("preferencial")
+    const display2 = document.getElementById("normal")
+
+    const filaPref = []
+    const filaNormal = []
+
+    const frm = document.querySelector("form")
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const name = frm.name.value.trim()
+      const age = Number(frm.age.value)
+
+      if (name === "" || isNaN(age)) {
+        alert("Preencha corretamente!")
+        return
+      }
+
+      if (age >= 60) {
+        filaPref.push(name)
+      } else {
+        filaNormal.push(name)
+      }
+
+      display1.innerText = `FILA PREFERENCIAL:\n${filaPref.join("\n")}`
+      display2.innerText = `FILA NORMAL:\n${filaNormal.join("\n")}`
+
+      frm.name.value = ""
+      frm.age.value = ""
+    })
+  </script>
+</body>
+
+</html>

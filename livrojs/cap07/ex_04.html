@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Nome no crachá</h1>
+
+  <form action="">
+    <p>Nome:
+      <input type="text" name="name">
+    </p>
+
+    <input type="submit">
+  </form>
+
+  <div>
+    <span></span>
+  </div>
+
+  <script>
+    const frm = document.querySelector("form")
+
+    const display = document.querySelector("span")
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const name = frm.name.value
+
+      const first = name.indexOf(" ")
+      const last = name.lastIndexOf(" ")
+
+      const nome = name.substr(0, first) + name.substr(last)
+
+      display.innerText = nome
+    })
+  </script>
+</body>
+
+</html>

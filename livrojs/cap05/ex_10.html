@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Repeat Fruit</h1>
+
+  <form action="">
+    <p>N de Chinchilas:
+      <input type="text" name="chinchilas">
+    </p>
+
+    <p>Numero de anos:
+      <input type="text" name="number">
+    </p>
+
+    <input type="submit">
+  </form>
+
+  <div>
+    <span></span>
+  </div>
+
+  <script>
+    const frm = document.querySelector("form")
+    const spn = document.querySelector("span")
+
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      spn.innerText = ""
+      let year = ""
+      let acm = 1
+
+      const name = Number(frm.chinchilas.value)
+      const number = Number(frm.number.value)
+
+
+      for (let i = number; i < number + 10; i++) {
+        acm = acm * 3
+        year++
+        spn.innerText += `${year}º ${name * acm}` + "\n"
+      }
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Situaçõa do aluno</h1>
+
+  <form action="">
+    <div>
+      <label for="">Nome do aluno:</label>
+      <input type="text" id="name">
+    </div>
+
+    <div>
+      <label for="">1 nota:</label>
+      <input type="text" id="one">
+    </div>
+
+    <div>
+      <label for="">2 nota:</label>
+      <input type="text" id="two">
+    </div>
+
+    <input type="submit" value="Exibir notas">
+  </form>
+
+  <section>
+    <div>
+      <span id="msgone">Medias das notas:</span>
+      <span id="msgtwo"></span>
+    </div>
+  </section>
+
+
+  <script>
+    const frm = document.querySelector("form")
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const name = document.getElementById("name").value
+      const one = Number(document.getElementById("one").value)
+      const two = Number(document.getElementById("two").value)
+
+      const media = (one + two) / 2
+
+      const msgone = document.getElementById("msgone")
+      const msgtwo = document.getElementById("msgtwo")
+
+      msgone.innerText = `A media das notas foi ${media}`
+      if (media < 7) {
+        msgtwo.innerText = `Ops, vc foi reprovada`
+        msgtwo.style.color = "red"
+      } else {
+        msgtwo.innerText = `Parabens ${name}, vc foi aprovada`
+        msgtwo.style.color = "blue"
+
+      }
+
+
+
+
+
+
+
+    })
+
+  </script>
+</body>
+
+</html>

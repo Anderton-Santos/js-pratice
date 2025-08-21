@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Pescaria</h1>
+
+  <form action="">
+    <p>Numero de pessoas:
+      <input type="number" id="person">
+    </p>
+
+    <p>Numero de peixes:
+      <input type="number" id="fish">
+    </p>
+
+    <input type="submit" value="Calcular">
+  </form>
+
+  <div>
+    <span id="display"></span>
+  </div>
+
+  <script>
+    const frm = document.querySelector("form")
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const person = Number(document.getElementById("person").value)
+      const fish = Number(document.getElementById("fish").value)
+
+      const display = document.getElementById("display")
+
+      if (person >= fish) {
+        const tot = (person * 20)
+        display.innerText = tot
+
+      } else {
+        const totPeixe = (person * 20) + ((fish - person) * 12)
+        display.innerText = totPeixe
+      }
+    })
+
+
+  </script>
+</body>
+
+</html>

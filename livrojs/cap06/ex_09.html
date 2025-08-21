@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Programa Concurso</h1>
+
+  <form action="">
+    <p>Nome:
+      <input type="text" name="name">
+    </p>
+
+    <p>Acertos:
+      <input type="number" name="number">
+
+      <input type="submit">
+    </p>
+
+  </form>
+
+  <div>
+    <button id="btn1">Listar todos</button>
+    <button id="btn2">Aprovado 2 Etapa</button>
+  </div>
+
+  <div>
+    <span></span>
+  </div>
+
+  <script>
+
+    const frm = document.querySelector("form")
+
+    const btn1 = document.getElementById("btn1")
+    const btn2 = document.getElementById("btn2")
+
+    const spn = document.querySelector("span")
+
+    let list = []
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const name = frm.name.value
+      const number = Number(frm.number.value)
+
+      list.push({ name, number })
+
+      frm.name.value = ""
+      frm.number.value = ""
+
+      btn1.dispatchEvent(new Event("click"))
+
+    })
+
+    btn1.addEventListener("click", () => {
+
+      let acm = ""
+
+      for (const alunos of list) {
+        const { name, number } = alunos
+        acm += `${alunos.name} - ${alunos.number} acertos` + "\n"
+
+      }
+      spn.innerText = `${acm}`
+    })
+
+    btn2.addEventListener("click", () => {
+      const meta = Number(prompt("Numero de acertos para aprovação"))
+
+      let copia = [...list]
+
+      const dec = copia.sort((a, b) => b.number - a.number)
+
+      let acum = ""
+
+      for (let listDec of dec) {
+        acum += `${listDec.name} - ${listDec.number} acertos` + "\n"
+        console.log(listDec)
+      }
+
+      spn.innerText = `${acum}`
+
+
+    })
+
+
+
+
+
+  </script>
+</body>
+
+</html>

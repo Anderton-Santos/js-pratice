@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Programa fuso horário</h1>
+
+  <div>
+    <label for="">Hora no Brasil:</label>
+    <input type="text" id="input">
+  </div>
+
+  <button>Editar Hora na frança</button>
+
+  <div>
+    <span id="display"></span>
+  </div>
+
+  <script>
+    const btn = document.querySelector("button")
+    const display = document.getElementById("display")
+
+    btn.addEventListener("click", () => {
+      const input = Number(document.getElementById("input").value)
+
+      let dia = Number(24)
+      const fuso = (input + 5)
+
+      if (fuso > dia) {
+        const franca = (fuso - dia)
+        display.innerText = franca
+      } else {
+        display.innerText = fuso
+      }
+
+
+
+
+    })
+  </script>
+</body>
+
+</html>

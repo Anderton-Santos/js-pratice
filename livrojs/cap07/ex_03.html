@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Inverter a palavra</h1>
+
+  <script>
+    const palavra = prompt("Digite a palavra:")
+    const tam = palavra.length
+
+    let inverso = palavra.charAt(tam - 1).toUpperCase()
+
+    for (let i = tam - 2; i >= 0; i--) {
+      inverso += palavra.charAt(i).toLocaleLowerCase()
+    }
+
+    alert(`Palavra: ${palavra} invertida ${inverso}`)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Jogos eliminatorios</h1>
+  <form action="">
+    <div>
+      Clube:
+      <input type="text" name="name">
+      <input type="submit">
+    </div>
+
+
+    <div>
+      <button name="listAll">Listar clubes</button>
+      <button name="tableGame">Mostrar tabelas de jogos</button>
+    </div>
+  </form>
+
+  <div>
+    <span></span>
+  </div>
+
+  <script>
+
+    const display = document.querySelector("span")
+
+    const clubes = []
+
+    const frm = document.querySelector("form")
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+
+      const name = frm.name.value
+
+      if (name == "") return
+
+      clubes.push(name)
+
+      frm.name.value = ""
+
+      frm.listAll.dispatchEvent(new Event("click"))
+
+    })
+
+    frm.listAll.addEventListener("click", () => {
+
+      let listClubes = ""
+
+      for (const club of clubes) {
+        listClubes += `${club}` + '\n'
+      }
+
+      display.innerText = listClubes
+      console.log(clubes)
+      console.log(listClubes)
+    })
+
+    frm.tableGame.addEventListener("click", () => {
+
+      if (clubes.length % 2 != 0) {
+        alert("Numeros de times incompatives para tabela de jogos")
+        return
+      }
+
+      const copia = [...clubes]
+
+      const metade = (clubes.length / 2)
+      const pote1 = copia.slice(0, metade)
+      const pote2 = copia.slice(metade)
+
+      pote1.sort()
+      pote2.sort().reverse
+
+      let acm = ""
+
+      for (let i = 0; i < pote1.length; i++) {
+        acm += `${pote1[i]} X ${pote2[i]}\n`
+      }
+
+      display.innerText = `${acm}`
+
+
+    })
+
+
+
+
+  </script>
+</body>
+
+</html>

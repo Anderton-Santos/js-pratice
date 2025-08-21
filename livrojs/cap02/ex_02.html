@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Cinema</h1>
+
+  <form action="">
+    <label for="">Titulo do filme:</label>
+    <input id="name" type="text">
+
+    <div>
+      <label>duração(min):</label>
+      <input id="duration" type="text">
+    </div>
+
+    <button id="btn">Converter horas e minutos</button>
+
+    <div>
+      <h3 id="display-titulo"></h3>
+      <span id="display-duration">
+        <span id="hour"></span>
+        <span id="min"></span>
+      </span>
+    </div>
+
+  </form>
+
+  <script>
+
+
+    const btn = document.getElementById("btn")
+
+    btn.addEventListener("click", (e) => {
+      e.preventDefault()
+      const titulo = document.getElementById("name").value
+      const dur = document.getElementById("duration").value
+      const hor = Math.floor(dur / 60)
+      const min = (dur % 60)
+      const displayTitulo = document.getElementById("display-titulo").innerText = titulo
+      const displayDuration = document.getElementById("hour")
+      const displayMinute = document.getElementById("min")
+
+      displayDuration.innerText = `${hor} Hora e`
+      displayMinute.innerText = `${min} minutos`
+
+
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Repeat Fruit</h1>
+
+  <form action="">
+    <p>Nome:
+      <input type="text" name="name">
+    </p>
+
+    <p>Numero:
+      <input type="text" name="number">
+    </p>
+
+    <input type="submit">
+  </form>
+
+  <div>
+    <span></span>
+  </div>
+
+  <script>
+    const frm = document.querySelector("form")
+    const spn = document.querySelector("span")
+
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      spn.innerText = ""
+
+      const name = frm.name.value
+      const number = frm.number.value
+
+      for (let i = 0; i < number; i++) {
+        spn.innerText += name + "*"
+      }
+    })
+
+
+  </script>
+</body>
+
+</html>

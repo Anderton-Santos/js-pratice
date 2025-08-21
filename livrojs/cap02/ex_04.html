@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Restaurante JS</h1>
+
+  <div>
+    <label for="">Buffet por Quilo R$:</label>
+    <input type="text" id="kg">
+  </div>
+
+  <div> <label for="">Consumo do cliente (gr):</label>
+    <input type="text" id="gr">
+  </div>
+
+  <button id="btn">Calcular Preço</button>
+
+  <div id="display"></div>
+
+
+  <script>
+    const btn = document.getElementById("btn")
+
+    btn.addEventListener("click", (e) => {
+      e.preventDefault()
+
+      const kg = Number(document.getElementById("kg").value);
+      const gr = Number(document.getElementById("gr").value);
+
+      const pesoEmKg = (gr / 1000) * kg;
+
+
+      const display = document.getElementById("display")
+
+      display.innerText = `${pesoEmKg}`
+    })
+
+  </script>
+</body>
+
+</html>

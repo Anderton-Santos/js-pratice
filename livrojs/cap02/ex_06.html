@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Lan House</h1>
+
+  <form>
+    <div>
+      <label for="">valor por 15min de uso:</label>
+      <input type="text" id="name">
+    </div>
+
+    <div>
+      <label for="">Tempo de uso de um cliente:</label>
+      <input type="text" id="price">
+    </div>
+
+    <input type="submit">
+  </form>
+
+  <div>
+    <span></span>
+  </div>
+
+
+  <script>
+    const frm = document.querySelector("form")
+    const span = document.querySelector("span")
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const prop = document.getElementById("name").value
+      const clie = document.getElementById("price").value
+
+      const calcClient = Math.ceil(clie / 15) * prop
+
+      span.innerText = `Valor a pagar ${calcClient}`
+
+
+
+    })
+
+  </script>
+</body>
+
+</html>

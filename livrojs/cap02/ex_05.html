@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Farmacia JS</h1>
+
+  <form>
+    <div>
+      <label for="">Medicamento:</label>
+      <input type="text" id="name">
+    </div>
+
+    <div>
+      <label for="">Preço:</label>
+      <input type="text" id="price">
+    </div>
+
+    <input type="submit">
+  </form>
+
+  <div>
+    <span></span>
+  </div>
+
+
+  <script>
+    const frm = document.querySelector("form")
+    const span = document.querySelector("span")
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const med = document.getElementById("name").value
+      const preco = document.getElementById("price").value
+
+      const calc = Math.floor(preco * 2)
+
+      span.innerText = `Leve 2 ${med} por apenas ${calc}`
+
+
+
+    })
+
+  </script>
+</body>
+
+</html>

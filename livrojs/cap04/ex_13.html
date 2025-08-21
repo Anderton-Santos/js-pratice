@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>lados do triangulo</h1>
+
+  <form action="">
+    <p>
+      lado A:
+      <input type="text" id="a" name="a">
+    </p>
+
+    <p>
+      lado B:
+      <input type="text" id="b" name="b">
+    </p>
+
+    <p>
+      lado C:
+      <input type="text" id="c" name="c">
+    </p>
+
+    <input type="submit" id="btn">
+  </form>
+
+  <div>
+    <span id="span1"></span>
+    <span id="span2"></span>
+  </div>
+
+
+  <script>
+    const frm = document.querySelector("form")
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+      const inpt1 = frm.a.value
+      const inpt2 = frm.b.value
+      const inpt3 = frm.c.value
+
+      const span1 = document.getElementById("span1")
+      const span2 = document.getElementById("span2")
+
+      if (inpt1 === inpt2 && inpt2 === inpt3) {
+        span1.innerText = `Pde ser um trinagulo`
+        span2.innerText = `Equilatero`
+        return
+
+      } else if (inpt1 === inpt2 || inpt2 === inpt3 || inpt1 === inpt3) {
+
+        span1.innerText = `Pde ser um trinagulo`
+        span2.innerText = `Isocéles`
+        return
+
+      } else {
+        span1.innerText = `Pde ser um trinagulo`
+        span2.innerText = `escaleno`
+        return
+      }
+    })
+
+  </script>
+</body>
+
+</html>

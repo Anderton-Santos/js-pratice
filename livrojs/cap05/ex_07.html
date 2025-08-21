@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #display3 {
+      white-space: pre-line;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Cálculo das parcelas</h1>
+
+  <form>
+    <p>
+      Conta:
+      <input type="text" name="count">
+    </p>
+
+    <p>
+      Parcelas:
+      <input type="text" name="parcela">
+    </p>
+
+    <input type="submit">
+  </form>
+
+  <div>
+    <span id="display1"></span><br>
+    <span id="display2"></span><br>
+    <span id="display3"></span>
+  </div>
+
+  <script>
+    const frm = document.querySelector("form");
+
+    const display1 = document.getElementById("display1");
+    const display2 = document.getElementById("display2");
+    const display3 = document.getElementById("display3");
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      let acm = "";
+      let nmrParcelas = 0;
+
+      const count = Number(frm.count.value);
+      const parcela = Number(frm.parcela.value);
+
+
+      const valorBase = Math.floor((count / parcela) * 100) / 100;
+
+      const resto = (count - (valorBase * (parcela - 1))).toFixed(2);
+
+      for (let i = 0; i < parcela; i++) {
+        nmrParcelas++;
+        if (i === parcela - 1) {
+          acm += `Parcela ${nmrParcelas}: R$ ${resto}\n`;
+        } else {
+          acm += `Parcela ${nmrParcelas}: R$ ${valorBase.toFixed(2)}\n`;
+        }
+      }
+
+      display1.innerText = `A conta foi R$ ${count.toFixed(2)}`;
+      display2.innerText = `Número de parcelas: ${nmrParcelas}`;
+      display3.innerText = acm;
+    });
+  </script>
+</body>
+
+</html>

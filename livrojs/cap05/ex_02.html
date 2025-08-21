@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Decrecente</h1>
+
+  <input type="number">
+  <button>Decrescer</button>
+
+  <div>
+    <span></span>
+  </div>
+
+
+  <script>
+    const btn = document.querySelector("button")
+    const span = document.querySelector("span")
+
+    btn.addEventListener("click", () => {
+      const inpt = document.querySelector("input").value
+
+      let acum = ""
+
+      for (let i = inpt; i > 1; i--) {
+        acum = acum + i + ", "
+      }
+      acum = acum + "1."
+
+      span.innerText = acum
+    })
+
+  </script>
+</body>
+
+</html>

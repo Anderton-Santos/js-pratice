@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Jogo descubra o numero</h1>
+
+  <form action="">
+    <label for="">Numero:</label>
+    <input type="text" name="inpt">
+    <input type="submit" value="Apostar"></input>
+  </form>
+
+  <h3>Numero de 1 a 100</h3>
+
+  <div>
+    <span id="display1"></span>
+    <span id="display2"></span>
+  </div>
+
+
+  <script>
+
+    const display1 = document.getElementById("display1")
+    const display2 = document.getElementById("display2")
+
+    const nmrs = []
+    const chance = 6
+
+    const chute = Math.floor(Math.random() * 100) + 1;
+    console.log(chute)
+
+    const frm = document.querySelector("form")
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const inpt = frm.inpt.value
+
+      if (inpt <= 0 || inpt > 100) return alert("Digite um numero maior que 1 e menor que 100!")
+
+      if (inpt != chute) {
+        nmrs.push(inpt)
+        const quantNmr = nmrs.length
+        if (quantNmr < chance) {
+          display1.innerText = `Erros: ${quantNmr} - ${nmrs}`
+          frm.inpt.value = ""
+        } else {
+          alert("Numero de chances zeradas")
+          confirm("Jogar novamenete?")
+          if (confirm) {
+            location.reload()
+            nmrs = []
+            chance = 6
+            frm.inpt.value = ""
+
+          } else {
+            return
+          }
+
+        }
+
+      } else {
+        alert(`Você acertou parabéns número ${chute}`)
+      }
+
+    })
+  </script>
+</body>
+
+</html>

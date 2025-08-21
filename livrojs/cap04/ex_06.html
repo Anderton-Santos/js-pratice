@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Raiz quadrada</h1>
+
+  <div>
+    <label for="">Numero:</label>
+    <input type="text" id="input">
+  </div>
+
+  <button>Exibir raiz quadrada</button>
+
+  <div>
+    <span id="display"></span>
+  </div>
+
+  <script>
+    const btn = document.querySelector("button")
+    const display = document.getElementById("display")
+
+    btn.addEventListener("click", () => {
+      const input = Number(document.getElementById("input").value)
+
+      const result = Math.sqrt(input)
+
+      if (result * result == input) {
+        display.innerText = `Qudrado perfeito`
+      } else {
+        display.innerText = result
+      }
+
+
+
+
+
+
+
+    })
+  </script>
+</body>
+
+</html>
