@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Clube da natação</h1>
+
+  <form action="">
+    <p>Nome do atleta:
+      <input type="text" name="name">
+    </p>
+
+    <p>Idade:
+      <input type="number" name="age">
+    </p>
+
+    <input type="submit">
+  </form>
+
+  <div>
+    <span id="display"></span>
+  </div>
+
+  <script>
+    const frm = document.querySelector("form")
+
+    const display = document.getElementById("display")
+
+    const retornarTracos = (name) => {
+      return name.replace(/\S/g, "-")
+    }
+
+
+    const categorizarAlunos = (age) => {
+
+      let cat
+
+      age <= 12 ? cat = `Categoria infantil` : age > 13 && age <= 18 ? cat = "Juvenil" : cat = "Adulto"
+
+      return cat
+
+    }
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+      const name = frm.name.value
+      const age = frm.age.value
+
+      const displayName = retornarTracos(name)
+      const displayCategory = categorizarAlunos(age)
+
+      display.innerText = `${name} \n ${displayName} \n ${displayCategory}`
+
+      frm.name.value = ""
+      frm.age = frm.age.value = ""
+
+
+    })
+  </script>
+</body>
+
+</html>

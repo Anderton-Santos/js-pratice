@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Revenda Avenida - Promoção</h1>
+
+  <form action="">
+    <p>Modelo do veículo:
+      <input type="text" name="name">
+    </p>
+
+    <p>Ano:
+      <input type="number" name="year">
+    </p>
+
+    <p>Preço:
+      <input type="number" name="price">
+    </p>
+
+    <input type="submit">
+  </form>
+
+  <div>
+    <p id="display1"></p>
+    <p id="display2"></p>
+    <p id="display3"></p>
+  </div>
+
+  <script>
+    const frm = document.querySelector("form")
+
+    const display1 = document.getElementById("display1")
+    const display2 = document.getElementById("display2")
+    const display3 = document.getElementById("display3")
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const name = frm.name.value
+      const year = Number(frm.year.value)
+      const price = Number(frm.price.value)
+
+      const status = YearFabrication(year)
+      const entrada = CalcularEntrada(status, price)
+      const parcela = (price - entrada) / 10
+
+      display1.innerText = name + " - " + status
+      display2.innerText = "Entrada: R$ " + entrada.toFixed(2)
+      display3.innerText = "Parcelas (10x): R$ " + parcela.toFixed(2)
+    })
+
+    const YearFabrication = (year) => {
+      let atual = new Date().getFullYear()
+      let modelo
+
+      if (year === atual) {
+        modelo = "Novo"
+      } else if (atual - year === 1 || atual - year === 2) {
+        modelo = "SemiNovo"
+      } else {
+        modelo = "Usado"
+      }
+
+      return modelo
+    }
+
+    const CalcularEntrada = (status, valor) => {
+      if (status === "Novo") {
+        return valor * 0.5
+      } else {
+        return valor * 0.3
+      }
+    }
+  </script>
+</body>
+
+</html>

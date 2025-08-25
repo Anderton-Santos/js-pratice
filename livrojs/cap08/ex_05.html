@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .oculto {
+      display: none;
+    }
+
+    .exbie {
+      display: inline;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Vetreninaria Avenida</h1>
+
+  <form action="">
+
+    <p>Valor da vacina:
+      <input type="text" name="valueVaci">
+    </p>
+
+    <p>Possui convenio:
+      <input type="radio" id="radioSim" name="vet" checked>Sim
+      <input type="radio" id="radioNao" name="vet">Não
+    </p>
+
+    <p>Convênio
+      <span class="ocul">Sem convênio</span>
+      <select name="id=" id="selectCon" class="exibe">
+        <option value="amgsanimais" id="amganimais">Amigos dos animais</option>
+        <option value="saudeanimais" id="saudeanimais">Saúde Animal</option>
+
+
+      </select>
+    </p>
+
+    <input type="submit" value="Calcular desconto">
+
+  </form>
+
+  <div>
+    <span id="display1"></span>
+    <span id="display2"></span>
+  </div>
+
+
+  <script>
+    const radioS = document.getElementById("radioSim")
+    const radioN = document.getElementById("radioNao")
+
+    const selectCon = document.getElementById("selectCon")
+
+    const display1 = document.getElementById("display1")
+
+    radioS.addEventListener("click", () => {
+      selectCon.classList.add("exibe")
+      selectCon.classList.remove("oculto")
+    })
+
+    radioN.addEventListener("click", () => {
+      selectCon.classList.add("oculto")
+      selectCon.classList.remove("exibe")
+    })
+
+    const frm = document.querySelector("form")
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const inputValue = Number(frm.valueVaci.value)
+
+      const selctAnimais = document.getElementById("selectCon").value
+
+      if (radioN.checked) {
+        let desc = (inputValue * 0.1)
+        let pag = (inputValue - desc)
+
+        display1.innerText = `Deconto: R$ ${desc}\n A pagar: R$ ${pag}`
+
+      } else if (selectCon.value == "amgsanimais") {
+        let desc = (inputValue * 0.2)
+        let pag = (inputValue - desc)
+
+        display1.innerText = `Deconto: R$ ${desc}\n A pagar: R$ ${pag}`
+
+      } else if (selectCon.value == "saudeanimais") {
+        let desc = (inputValue * 0.5)
+        let pag = (inputValue - desc)
+
+        display1.innerText = `Deconto: R$ ${desc}\n A pagar: R$ ${pag}`
+      }
+
+
+
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .oculto {
+      display: none;
+    }
+
+    .exibe {
+      display: inline;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Pizzaria Avenida - Controle de pedidos</h1>
+
+  <form action="">
+    <p>Item do pedido:
+      <input type="radio" id="radioPizza" name="tipoItem"> Pizza
+      <input type="radio" id="radioBebida" name="tipoItem"> Bebidas
+    </p>
+
+    <div>
+      <p>Item:
+        <select id="inbebida" class="oculto">
+          <option value="refrigerante">Refrigerante Litro</option>
+          <option value="suco">Jarra de suco</option>
+          <option value="agua">Água mineral</option>
+        </select>
+
+        <select id="inpizza" class="oculto">
+          <option value="pizza P">Pizza P</option>
+          <option value="pizza M">Pizza M</option>
+          <option value="pizza G">Pizza G</option>
+        </select>
+      </p>
+    </div>
+
+    <p>Detalhe do item:
+      <input type="text" id="inputDetail">
+      <input type="submit">
+    </p>
+  </form>
+
+  <div>
+    <span id="display"></span>
+  </div>
+
+  <script>
+
+    const details = []
+
+    const frm = document.querySelector("form")
+
+    const radioPizza = document.getElementById("radioPizza")
+    const radioBebida = document.getElementById("radioBebida")
+
+    const inpizza = document.getElementById("inpizza")
+    const inbebida = document.getElementById("inbebida")
+
+    const display = document.getElementById("display")
+
+    radioPizza.addEventListener("click", () => {
+      inpizza.className = "exibe"
+      inbebida.className = "oculto"
+    })
+
+    radioBebida.addEventListener("click", () => {
+      inpizza.className = "oculto"
+      inbebida.className = "exibe"
+    })
+
+    const inputDetail = document.getElementById("inputDetail")
+
+
+    inputDetail.addEventListener("focus", () => {
+
+      if (radioPizza.checked) {
+        const selectPizza = inpizza.value
+
+        const num = selectPizza == "pizzaM" ? 2 : selectPizza == "pizzaG" ? 3 : 4
+
+        inputDetail.placeholder = `Até ${num} Sabores`
+      } else {
+        inputDetail.placeholder = ""
+      }
+
+    })
+
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      let acm = ""
+
+      if (radioPizza.checked) {
+        const slePizza = inpizza.value
+        const inptDetal = inputDetail.value
+
+        details.push({ slePizza, inptDetal })
+        console.log(details)
+
+      } else if (radioBebida.checked) {
+        const sleBebi = inbebida.value
+        const inptDetal = inputDetail.value
+
+        details.push({ sleBebi, inptDetal })
+        console.log(details)
+      }
+
+      for (let det of details) {
+        if (det.slePizza) {
+          acm += `${det.slePizza} ${det.inptDetal} \n`
+        } else if (det.sleBebi) {
+          acm += `${det.sleBebi} ${det.inptDetal} \n`
+        }
+
+
+      }
+
+      display.innerText = `${acm}`
+
+
+    })
+
+  </script>
+</body>
+
+</html>

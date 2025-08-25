@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Programa Senha inicial</h1>
+
+  <form action="">
+    <p>Nome de aluno:
+      <input type="text" name="name">
+    </p>
+
+    <input type="submit">
+  </form>
+
+  <span></span>
+
+  <script>
+
+    const validarNome = (name) => {
+      let contSpace = 0
+
+      for (let i = 0; i < name.length; i++)
+        if (name.charAt(i) == " ") {
+          contSpace++
+        }
+
+      if (contSpace < 2) {
+        alert("Digite um nome complet")
+        return false
+      } else {
+        return true
+      }
+
+    }
+
+    const obterSobrenome = (item) => {
+
+      const seperate = item.split(" ")
+      const last = seperate[seperate.length - 1]
+      // console.log(last.toLowerCase())
+      return last.toLowerCase()
+
+    }
+
+    const constVogais = (name) => {
+
+
+      let acmVogais = 0
+
+      for (let v of name) {
+        if (v == "a" || v == "e" || v == "i" || v == "o" || v == "u") {
+          acmVogais++
+        }
+
+      }
+
+      return acmVogais
+
+    }
+
+
+
+
+
+    const frm = document.querySelector("form")
+
+    const display = document.querySelector("span")
+
+    frm.addEventListener("submit", (e) => {
+      e.preventDefault()
+
+      const name = frm.name.value
+
+      const agreeName = validarNome(name)
+      const lastNmae = obterSobrenome(name)
+      const vogais = constVogais(name)
+
+      display.innerText = `Senha Inicial: ${lastNmae}${vogais.toString().padStart(2, '0')}`
+
+    })
+  </script>
+</body>
+
+</html>
